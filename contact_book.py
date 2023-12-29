@@ -1,9 +1,45 @@
+import random
+
 def welcome():
     """This function displays a welcome message"""
     print("Welcome to Shecktar Contact Book App")
 
+def add_contact(name, phone, email, address):
+    contacts[name] = {"Phone": phone, "Email": email, "Address": address}
+
+def view_contacts():
+    for name, info in contacts.items():
+        print(f"\nContact: {name}")
+        print(f"Phone: {info['Phone']}")
+        print(f"Email: {info['Email']}")
+        print(f"Address: {info['Address']}")
+
+def search_contact(name):
+    if name in contacts:
+        print(f"\nContact: {name}")
+        print(f"Phone: {contacts[name]['Phone']}")
+        print(f"Email: {contacts[name]['Email']}")
+        print(f"Address: {contacts[name]['Address']}")
+    else:
+        print("\nContact not found.")
+
+def update_contact(name, phone, email, address):
+    if name in contacts:
+        contacts[name] = {"Phone": phone, "Email": email, "Address": address}
+        print(f"\nUpdated details for: {name}")
+    else:
+        print("\nContact not found.")
+
+def delete_contact(name):
+    if name in contacts:
+        del contacts[name]
+        print(f"\nDeleted contact: {name}")
+    else:
+        print("\nContact not found.")
+
 def main():
     welcome()
+    contacts = {}
     while True:
         print("\nSelect operation:")
         print("1. Add Contact")
